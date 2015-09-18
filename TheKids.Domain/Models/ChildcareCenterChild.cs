@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace TheKids.Domain.Models
 {
@@ -19,6 +20,11 @@ namespace TheKids.Domain.Models
         public DateTime StartTime { get; set; }
         public DateTime? EndTime { get; set; }
 
-        public ICollection<ChildAttendance> Attendances { get; set; } 
+        public ICollection<ChildAttendance> Attendances { get; set; }
+
+        public ChildcareCenterChild()
+        {
+            Attendances = new Collection<ChildAttendance>();
+        }
     }
 }
