@@ -3,7 +3,7 @@ using TheKids.Domain.Models;
 
 namespace TheKids.Infrastructure.Storage.EF.Mapping
 {
-    public class ChildMap : EntityTypeConfiguration<Child>
+    public class ChildMap : EntityBaseMap<Child>
     {
         public ChildMap()
         {
@@ -11,18 +11,16 @@ namespace TheKids.Infrastructure.Storage.EF.Mapping
             Property(t => t.MiddleName).IsRequired().HasMaxLength(100);
             Property(t => t.LastName).IsRequired().HasMaxLength(100);
             Property(t => t.FirstName).IsRequired().HasMaxLength(100);
-            Property(t => t.CreatedBy).IsRequired().HasMaxLength(100);
-            Property(t => t.UpdatedBy).IsRequired().HasMaxLength(100);
 
             HasMany(t => t.Languages)
                 .WithMany(t => t.LanguagesChild)
-                .Map(t => t.ToTable("ChildLanguage").MapLeftKey("Code").MapRightKey("ChildId"));
+                .Map(t => t.ToTable("ChildLanguage")
+                    .MapLeftKey("Code")
+                    .MapRightKey("ChildId"));
 
-            HasMany(t => t.Childcares)
-                .WithMany(t => t.Children)
-                .Map(t => t.ToTable("ChildcareCenterChild").
-                    MapLeftKey("ChildId").
-                    MapRightKey("ChildcareCenterId"));
+            HasMany(t => t.ChildcareCenterChildren).WithRequired(t => t.Child).
+                HasForeignKey(t => t.ChildId)
+                .WillCascadeOnDelete(false);
 
             HasRequired(t => t.ResidentialAddress)
                 .WithMany(t => t.ResidentialAddressChildren)

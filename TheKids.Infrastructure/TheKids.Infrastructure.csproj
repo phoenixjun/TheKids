@@ -48,10 +48,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\EF\Mapping\AddressMap.cs" />
+    <Compile Include="Storage\EF\Mapping\ChildAttendanceMap.cs" />
+    <Compile Include="Storage\EF\Mapping\ChildcareCenterChildMap.cs" />
     <Compile Include="Storage\EF\Mapping\ChildcareCenterMap.cs" />
     <Compile Include="Storage\EF\Mapping\ChildMap.cs" />
+    <Compile Include="Storage\EF\Mapping\EntityBaseMap.cs" />
     <Compile Include="Storage\EF\Mapping\LanguageMap.cs" />
     <Compile Include="Storage\EF\Mapping\StaffMap.cs" />
     <Compile Include="Storage\EF\Repository.cs" />
@@ -67,7 +71,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Storage\EF\TestData\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

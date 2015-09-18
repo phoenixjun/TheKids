@@ -1,14 +1,12 @@
-﻿using System.Data.Entity.ModelConfiguration;
-using TheKids.Domain.Models;
+﻿using TheKids.Domain.Models;
 
 namespace TheKids.Infrastructure.Storage.EF.Mapping
 {
-    public class StaffMap : EntityTypeConfiguration<Staff>
+    public class StaffMap : EntityBaseMap<Staff>
     {
         public StaffMap()
         {
-            Property(t => t.CreatedBy).IsRequired().HasMaxLength(100);
-            Property(t => t.UpdatedBy).IsRequired().HasMaxLength(100);
+
             Property(t => t.FirstName).IsRequired().HasMaxLength(100);
             Property(t => t.LastName).IsRequired().HasMaxLength(100);
             Property(t => t.MiddleName).IsRequired().HasMaxLength(100);

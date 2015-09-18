@@ -41,10 +41,11 @@
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Child.cs" />
     <Compile Include="Models\ChildcareCenter.cs" />
+    <Compile Include="Models\ChildcareCenterChild.cs" />
     <Compile Include="Models\Language.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\EntityBase.cs" />
-    <Compile Include="Models\KidsActivity.cs" />
+    <Compile Include="Models\ChildAttendance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Specification\AndSpecification.cs" />
     <Compile Include="Specification\ExtensionMethods.cs" />

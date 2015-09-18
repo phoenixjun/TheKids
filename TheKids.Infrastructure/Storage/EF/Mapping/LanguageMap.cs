@@ -3,7 +3,7 @@ using TheKids.Domain.Models;
 
 namespace TheKids.Infrastructure.Storage.EF.Mapping
 {
-    public class LanguageMap : EntityTypeConfiguration<Language>
+    public class LanguageMap : EntityBaseMap<Language>
     {
         public LanguageMap()
         {

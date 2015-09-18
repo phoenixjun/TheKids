@@ -13,12 +13,12 @@ namespace TheKids.Domain.Models
         public virtual Address Address { get; set; }
         public virtual Address MailingAddress { get; set; }
         public virtual List<Staff> Stafves { get; set; }
-        public virtual List<Child> Children { get; set; } 
+        public virtual List<ChildcareCenterChild> ChildcareCenterChildren { get; set; } 
 
         public ChildcareCenter()
         {
             Stafves = new List<Staff>();
-            Children = new List<Child>();
+            ChildcareCenterChildren = new List<ChildcareCenterChild>();
         }
     }
 }

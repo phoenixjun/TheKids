@@ -1,9 +1,8 @@
-﻿using System.Data.Entity.ModelConfiguration;
-using TheKids.Domain.Models;
+﻿using TheKids.Domain.Models;
 
 namespace TheKids.Infrastructure.Storage.EF.Mapping
 {
-    public class AddressMap : EntityTypeConfiguration<Address>
+    public class AddressMap : EntityBaseMap<Address>
     {
         public AddressMap()
         {
@@ -14,10 +13,7 @@ namespace TheKids.Infrastructure.Storage.EF.Mapping
             Property(t => t.State).HasMaxLength(50);
             Property(t => t.Suburb).HasMaxLength(50);
             Property(t => t.Postcode).HasMaxLength(10);
-            Property(t => t.CreatedBy).IsRequired().HasMaxLength(100);
-            Property(t => t.UpdatedBy).IsRequired().HasMaxLength(100);
-
-            ToTable("ResidentialAddress");
+            ToTable("Address");
         }
     }
 }

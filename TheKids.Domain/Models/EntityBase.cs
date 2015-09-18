@@ -9,7 +9,8 @@ namespace TheKids.Domain.Models
         public string UpdatedBy { get; set; }
         public DateTime CreatedTime { get; set; }
         public DateTime? UpdatedTime { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
+        public byte[] RowVersion { get; set; }
 
         protected EntityBase()
         {
