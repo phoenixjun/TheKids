@@ -30,8 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture, Version=3.34.2.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoFixture.3.34.2\lib\net40\Ploeh.AutoFixture.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -44,9 +52,37 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebApi\Components\PartialObjectConverterTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TheKids.Domain\TheKids.Domain.csproj">
+      <Project>{dedabb29-9d0b-45bb-a00d-801a5a19d93f}</Project>
+      <Name>TheKids.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TheKids.Infrastructure\TheKids.Infrastructure.csproj">
+      <Project>{6a134675-0594-4bcf-b47c-143e9da12817}</Project>
+      <Name>TheKids.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TheKids.Messages\TheKids.Messages.csproj">
+      <Project>{eee39965-d51f-47d1-9a14-f215b368ff44}</Project>
+      <Name>TheKids.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TheKids.WebApi.ViewModels\TheKids.WebApi.ViewModels.csproj">
+      <Project>{d07a936e-8cca-4bab-bbf9-51c2f0b4e1af}</Project>
+      <Name>TheKids.WebApi.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TheKids.WebApi\TheKids.WebApi.csproj">
+      <Project>{f88f9e21-5306-47cc-b46a-dcc8f0fc13ed}</Project>
+      <Name>TheKids.WebApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TheKids.Website\TheKids.Website.csproj">
+      <Project>{cf39ebe1-a980-4512-9f70-5a8f240ef17b}</Project>
+      <Name>TheKids.Website</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

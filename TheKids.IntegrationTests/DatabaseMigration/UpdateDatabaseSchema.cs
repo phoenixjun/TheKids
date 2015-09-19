@@ -9,7 +9,7 @@ namespace TheKids.IntegrationTests.DatabaseMigration
     [TestFixture]
     public class UpdateDatabaseSchema
     {
-        [Test]
+        [Explicit]
         public void Should_UpdateToLatestSchema()
         {
             Database.SetInitializer<TheKidsDbContext>(new MigrateDatabaseToLatestVersion<TheKidsDbContext, Configuration>());
