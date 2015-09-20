@@ -91,7 +91,7 @@
     <Compile Include="Components\FieldValidationResponse.cs" />
     <Compile Include="Components\FieldValidator.cs" />
     <Compile Include="Components\IFieldValidator.cs" />
-    <Compile Include="Components\ObjectDefinition.cs" />
+    <Compile Include="Components\PartialObjectDefinition.cs" />
     <Compile Include="Components\IPartialObjectConverter.cs" />
     <Compile Include="Components\PartialObjectConverter.cs" />
     <Compile Include="Controllers\ChildController.cs" />

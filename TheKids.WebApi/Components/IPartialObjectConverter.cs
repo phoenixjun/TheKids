@@ -9,6 +9,6 @@ namespace TheKids.WebApi.Components
     /// </summary>
     public interface IPartialObjectConverter
     {
-        ExpandoObject ConvertToExpandoObject(object response, ObjectDefinition objetDefinition);
+        object ConvertToExpandoObject(object response, PartialObjectDefinition objetDefinition);
     }
 }

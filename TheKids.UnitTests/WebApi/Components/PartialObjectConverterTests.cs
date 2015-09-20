@@ -1,7 +1,6 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Linq;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -54,7 +53,7 @@ namespace TheKids.UnitTests.WebApi.Components
         {
             var response = new Fixture().Create<TestObject>();
             var objectConverter = new PartialObjectConverter();
-            var responseObject = objectConverter.ConvertToExpandoObject(response, new ObjectDefinition());
+            var responseObject = objectConverter.ConvertToExpandoObject(response, new PartialObjectDefinition());
             var responseDict = responseObject as IDictionary<string, object>;
             Assert.AreEqual(2, responseDict.Keys.Count);
             Assert.AreEqual(response.TestObjectId, responseDict["TestObjectId"]);
@@ -67,9 +66,9 @@ namespace TheKids.UnitTests.WebApi.Components
             var response = new Fixture().Create<TestObject>();
             var objectConverter = new PartialObjectConverter();
             var responseObject = objectConverter.ConvertToExpandoObject(response,
-                new ObjectDefinition()
+                new PartialObjectDefinition()
                 {
-                    Properties = new Dictionary<string, ObjectDefinition>()
+                    Properties = new Dictionary<string, PartialObjectDefinition>()
                     {
                         {"Birthday", null},
                         {"Integer", null},
@@ -94,9 +93,9 @@ namespace TheKids.UnitTests.WebApi.Components
             var response = new Fixture().Create<TestObject>();
             var objectConverter = new PartialObjectConverter();
             var responseObject = objectConverter.ConvertToExpandoObject(response,
-                new ObjectDefinition()
+                new PartialObjectDefinition()
                 {
-                    Properties = new Dictionary<string, ObjectDefinition>()
+                    Properties = new Dictionary<string, PartialObjectDefinition>()
                     {
                         {"Birthday", null},
                         {"Integer", null},
@@ -117,9 +116,9 @@ namespace TheKids.UnitTests.WebApi.Components
             var response = new Fixture().Create<TestObject>();
             var objectConverter = new PartialObjectConverter();
             var responseObject = objectConverter.ConvertToExpandoObject(response,
-                new ObjectDefinition()
+                new PartialObjectDefinition()
                 {
-                    Properties = new Dictionary<string, ObjectDefinition>()
+                    Properties = new Dictionary<string, PartialObjectDefinition>()
                     {
                         {"Birthday", null},
                         {"Integer", null},
@@ -127,9 +126,9 @@ namespace TheKids.UnitTests.WebApi.Components
                         {"NullableBirthday", null},
                         {
                             "NestedObject",
-                            new ObjectDefinition()
+                            new PartialObjectDefinition()
                             {
-                                Properties = new Dictionary<string, ObjectDefinition>()
+                                Properties = new Dictionary<string, PartialObjectDefinition>()
                                 {
                                     {"Birthday", null},
                                     {"Integer", null}
@@ -157,9 +156,9 @@ namespace TheKids.UnitTests.WebApi.Components
             var response = new Fixture().Create<TestObject>();
             var objectConverter = new PartialObjectConverter();
             var responseObject = objectConverter.ConvertToExpandoObject(response,
-                new ObjectDefinition()
+                new PartialObjectDefinition()
                 {
-                    Properties = new Dictionary<string, ObjectDefinition>()
+                    Properties = new Dictionary<string, PartialObjectDefinition>()
                     {
                         {"Birthday", null},
                         {"Integer", null},
@@ -167,9 +166,9 @@ namespace TheKids.UnitTests.WebApi.Components
                         {"NullableBirthday", null},
                         {
                             "NestedObject",
-                            new ObjectDefinition()
+                            new PartialObjectDefinition()
                             {
-                                Properties = new Dictionary<string, ObjectDefinition>()
+                                Properties = new Dictionary<string, PartialObjectDefinition>()
                                 {
                                     {"Birthday", null},
                                     {"Integer", null}
@@ -177,9 +176,9 @@ namespace TheKids.UnitTests.WebApi.Components
                             }
                         },
                         {
-                            "ListObjects", new ObjectDefinition()
+                            "ListObjects", new PartialObjectDefinition()
                             {
-                                Properties = new Dictionary<string, ObjectDefinition>()
+                                Properties = new Dictionary<string, PartialObjectDefinition>()
                                 {
                                     {"OtherProperty", null}
                                 }
@@ -201,7 +200,7 @@ namespace TheKids.UnitTests.WebApi.Components
             Assert.AreEqual(response.NestedObject.Integer, nestObjectDict["Integer"]);
 
             // check the listed object
-            var listObjects = responseDict["ListObjects"] as ICollection<ExpandoObject>;
+            var listObjects = responseDict["ListObjects"] as ICollection<object>;
             Assert.IsNotNull(listObjects);
             Assert.AreEqual(response.ListObjects.Count, listObjects.Count);
             for (int i = 0; i < listObjects.Count; i++)
@@ -214,5 +213,74 @@ namespace TheKids.UnitTests.WebApi.Components
             }
             Console.WriteLine(JsonConvert.SerializeObject(responseObject));
         }
+
+        [Test]
+        public void Should_Convert_Collection()
+        {
+            var responses = new Fixture().CreateMany<TestObject>().ToList();
+            var objectConverter = new PartialObjectConverter();
+            var responseObject = objectConverter.ConvertToExpandoObject(responses,
+                new PartialObjectDefinition()
+                {
+                    Properties = new Dictionary<string, PartialObjectDefinition>()
+                    {
+                        {"Birthday", null},
+                        {"Integer", null},
+                        {"NullableDouble", null},
+                        {"NullableBirthday", null},
+                        {
+                            "NestedObject",
+                            new PartialObjectDefinition()
+                            {
+                                Properties = new Dictionary<string, PartialObjectDefinition>()
+                                {
+                                    {"Birthday", null},
+                                    {"Integer", null}
+                                }
+                            }
+                        },
+                        {
+                            "ListObjects", new PartialObjectDefinition()
+                            {
+                                Properties = new Dictionary<string, PartialObjectDefinition>()
+                                {
+                                    {"OtherProperty", null}
+                                }
+                            }
+                        }
+                    }
+                });
+
+            var responseList = ((IList<object>) responseObject).ToList();
+            Assert.AreEqual(responses.Count(), responseList.Count);
+
+            for (int i = 0; i < responseList.Count; i++)
+            {
+                var response = responses.ElementAt(i);
+                var resultObject = responseList.ElementAt(i) as IDictionary<string, object>;
+                // check the nested object
+                var nestObjectDict = resultObject["NestedObject"] as IDictionary<string, object>;
+                Assert.IsNotNull(nestObjectDict);
+                Assert.AreEqual(4, nestObjectDict.Keys.Count);
+                Assert.AreEqual(response.NestedObject.TestObject2Id, nestObjectDict["TestObject2Id"]);
+                Assert.AreEqual(response.NestedObject.URI, nestObjectDict["URI"]);
+                Assert.AreEqual(response.NestedObject.Birthday, nestObjectDict["Birthday"]);
+                Assert.AreEqual(response.NestedObject.Integer, nestObjectDict["Integer"]);
+
+                // check the listed object
+                var listObjects = resultObject["ListObjects"] as ICollection<object>;
+                Assert.IsNotNull(listObjects);
+                Assert.AreEqual(response.ListObjects.Count, listObjects.Count);
+                for (int j = 0; j < listObjects.Count; j++)
+                {
+                    var convertedElement = listObjects.ElementAt(i) as IDictionary<string, object>;
+                    Assert.AreEqual(response.ListObjects[i].TestObject3Id, convertedElement["TestObject3Id"]);
+                    Assert.AreEqual(response.ListObjects[i].URI, convertedElement["URI"]);
+                    Assert.AreEqual(response.ListObjects[i].OtherProperty, convertedElement["OtherProperty"]);
+
+                }                
+            }
+        }
+
     }
 }

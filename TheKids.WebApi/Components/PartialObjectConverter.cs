@@ -10,8 +10,20 @@ namespace TheKids.WebApi.Components
 {
     public class PartialObjectConverter : IPartialObjectConverter
     {
-        public ExpandoObject ConvertToExpandoObject(object response, ObjectDefinition objetDefinition)
+        public object ConvertToExpandoObject(object response, PartialObjectDefinition objetDefinition)
         {
+            // check if it is collection or not, if it is, loop through tht element and convert that
+            if (IsCollection(response))
+            {
+                var instance = new List<object>();
+                var valueEnumerable = response as IEnumerable;
+                foreach (var variable in valueEnumerable)
+                {
+                    instance.Add(ConvertToExpandoObject(variable, objetDefinition));
+                }
+                return instance;
+            }
+
             var definitions = objetDefinition.Properties;
             var returnObj = new ExpandoObject();
             var type = response.GetType();
@@ -45,13 +57,13 @@ namespace TheKids.WebApi.Components
                         // well there is some subdefinition we need to filter
                         if (IsCollection(value))
                         {
-                            var instance = new List<ExpandoObject>();
-                            var valueEnumerable = value as IEnumerable;
-                            foreach (var variable in valueEnumerable)
-                            {
-                                instance.Add(ConvertToExpandoObject(variable, definition));
-                            }
-                            ((IDictionary<string, object>)returnObj).Add(propertyInfo.Name, instance);
+                            //var instance = new List<object>();
+                            //var valueEnumerable = value as IEnumerable;
+                            //foreach (var variable in valueEnumerable)
+                            //{
+                            //    instance.Add(ConvertToExpandoObject(variable, definition));
+                            //}
+                            ((IDictionary<string, object>)returnObj).Add(propertyInfo.Name, ConvertToExpandoObject(value, definition));
 
                         }
                         else

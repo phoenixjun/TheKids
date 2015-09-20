@@ -10,12 +10,12 @@ namespace TheKids.WebApi.Components
     /// better performance when checking if the property exist or not comparing with other
     /// collection type
     /// </remarks>
-    public class ObjectDefinition
+    public class PartialObjectDefinition
     {
-        public ObjectDefinition()
+        public PartialObjectDefinition()
         {
-            Properties = new Dictionary<string, ObjectDefinition>();
+            Properties = new Dictionary<string, PartialObjectDefinition>();
         }
-        public IDictionary<string, ObjectDefinition> Properties { get; set; } 
+        public IDictionary<string, PartialObjectDefinition> Properties { get; set; } 
     }
 }
