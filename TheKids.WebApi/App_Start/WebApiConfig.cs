@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace TheKids.WebApi
 {
@@ -10,6 +7,9 @@ namespace TheKids.WebApi
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            var formatters = GlobalConfiguration.Configuration.Formatters;
+
+            formatters.Remove(formatters.XmlFormatter);
 
             // Web API routes
             config.MapHttpAttributeRoutes();

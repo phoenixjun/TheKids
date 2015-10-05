@@ -49,6 +49,10 @@
       <HintPath>..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -182,6 +186,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PhoneController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -196,6 +201,89 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\img\glyphicons-halflings.png" />
+    <Content Include="Content\img\phones\dell-streak-7.0.jpg" />
+    <Content Include="Content\img\phones\dell-streak-7.1.jpg" />
+    <Content Include="Content\img\phones\dell-streak-7.2.jpg" />
+    <Content Include="Content\img\phones\dell-streak-7.3.jpg" />
+    <Content Include="Content\img\phones\dell-streak-7.4.jpg" />
+    <Content Include="Content\img\phones\dell-venue.0.jpg" />
+    <Content Include="Content\img\phones\dell-venue.1.jpg" />
+    <Content Include="Content\img\phones\dell-venue.2.jpg" />
+    <Content Include="Content\img\phones\dell-venue.3.jpg" />
+    <Content Include="Content\img\phones\dell-venue.4.jpg" />
+    <Content Include="Content\img\phones\dell-venue.5.jpg" />
+    <Content Include="Content\img\phones\droid-2-global-by-motorola.0.jpg" />
+    <Content Include="Content\img\phones\droid-2-global-by-motorola.1.jpg" />
+    <Content Include="Content\img\phones\droid-2-global-by-motorola.2.jpg" />
+    <Content Include="Content\img\phones\droid-pro-by-motorola.0.jpg" />
+    <Content Include="Content\img\phones\droid-pro-by-motorola.1.jpg" />
+    <Content Include="Content\img\phones\lg-axis.0.jpg" />
+    <Content Include="Content\img\phones\lg-axis.1.jpg" />
+    <Content Include="Content\img\phones\lg-axis.2.jpg" />
+    <Content Include="Content\img\phones\motorola-atrix-4g.0.jpg" />
+    <Content Include="Content\img\phones\motorola-atrix-4g.1.jpg" />
+    <Content Include="Content\img\phones\motorola-atrix-4g.2.jpg" />
+    <Content Include="Content\img\phones\motorola-atrix-4g.3.jpg" />
+    <Content Include="Content\img\phones\motorola-bravo-with-motoblur.0.jpg" />
+    <Content Include="Content\img\phones\motorola-bravo-with-motoblur.1.jpg" />
+    <Content Include="Content\img\phones\motorola-bravo-with-motoblur.2.jpg" />
+    <Content Include="Content\img\phones\motorola-charm-with-motoblur.0.jpg" />
+    <Content Include="Content\img\phones\motorola-charm-with-motoblur.1.jpg" />
+    <Content Include="Content\img\phones\motorola-charm-with-motoblur.2.jpg" />
+    <Content Include="Content\img\phones\motorola-defy-with-motoblur.0.jpg" />
+    <Content Include="Content\img\phones\motorola-defy-with-motoblur.1.jpg" />
+    <Content Include="Content\img\phones\motorola-defy-with-motoblur.2.jpg" />
+    <Content Include="Content\img\phones\motorola-xoom-with-wi-fi.0.jpg" />
+    <Content Include="Content\img\phones\motorola-xoom-with-wi-fi.1.jpg" />
+    <Content Include="Content\img\phones\motorola-xoom-with-wi-fi.2.jpg" />
+    <Content Include="Content\img\phones\motorola-xoom-with-wi-fi.3.jpg" />
+    <Content Include="Content\img\phones\motorola-xoom-with-wi-fi.4.jpg" />
+    <Content Include="Content\img\phones\motorola-xoom-with-wi-fi.5.jpg" />
+    <Content Include="Content\img\phones\motorola-xoom.0.jpg" />
+    <Content Include="Content\img\phones\motorola-xoom.1.jpg" />
+    <Content Include="Content\img\phones\motorola-xoom.2.jpg" />
+    <Content Include="Content\img\phones\nexus-s.0.jpg" />
+    <Content Include="Content\img\phones\nexus-s.1.jpg" />
+    <Content Include="Content\img\phones\nexus-s.2.jpg" />
+    <Content Include="Content\img\phones\nexus-s.3.jpg" />
+    <Content Include="Content\img\phones\samsung-galaxy-tab.0.jpg" />
+    <Content Include="Content\img\phones\samsung-galaxy-tab.1.jpg" />
+    <Content Include="Content\img\phones\samsung-galaxy-tab.2.jpg" />
+    <Content Include="Content\img\phones\samsung-galaxy-tab.3.jpg" />
+    <Content Include="Content\img\phones\samsung-galaxy-tab.4.jpg" />
+    <Content Include="Content\img\phones\samsung-galaxy-tab.5.jpg" />
+    <Content Include="Content\img\phones\samsung-galaxy-tab.6.jpg" />
+    <Content Include="Content\img\phones\samsung-gem.0.jpg" />
+    <Content Include="Content\img\phones\samsung-gem.1.jpg" />
+    <Content Include="Content\img\phones\samsung-gem.2.jpg" />
+    <Content Include="Content\img\phones\samsung-mesmerize-a-galaxy-s-phone.0.jpg" />
+    <Content Include="Content\img\phones\samsung-mesmerize-a-galaxy-s-phone.1.jpg" />
+    <Content Include="Content\img\phones\samsung-mesmerize-a-galaxy-s-phone.2.jpg" />
+    <Content Include="Content\img\phones\samsung-mesmerize-a-galaxy-s-phone.3.jpg" />
+    <Content Include="Content\img\phones\samsung-showcase-a-galaxy-s-phone.0.jpg" />
+    <Content Include="Content\img\phones\samsung-showcase-a-galaxy-s-phone.1.jpg" />
+    <Content Include="Content\img\phones\samsung-showcase-a-galaxy-s-phone.2.jpg" />
+    <Content Include="Content\img\phones\samsung-transform.0.jpg" />
+    <Content Include="Content\img\phones\samsung-transform.1.jpg" />
+    <Content Include="Content\img\phones\samsung-transform.2.jpg" />
+    <Content Include="Content\img\phones\samsung-transform.3.jpg" />
+    <Content Include="Content\img\phones\samsung-transform.4.jpg" />
+    <Content Include="Content\img\phones\sanyo-zio.0.jpg" />
+    <Content Include="Content\img\phones\sanyo-zio.1.jpg" />
+    <Content Include="Content\img\phones\sanyo-zio.2.jpg" />
+    <Content Include="Content\img\phones\t-mobile-g2.0.jpg" />
+    <Content Include="Content\img\phones\t-mobile-g2.1.jpg" />
+    <Content Include="Content\img\phones\t-mobile-g2.2.jpg" />
+    <Content Include="Content\img\phones\t-mobile-mytouch-4g.0.jpg" />
+    <Content Include="Content\img\phones\t-mobile-mytouch-4g.1.jpg" />
+    <Content Include="Content\img\phones\t-mobile-mytouch-4g.2.jpg" />
+    <Content Include="Content\img\phones\t-mobile-mytouch-4g.3.jpg" />
+    <Content Include="Content\img\phones\t-mobile-mytouch-4g.4.jpg" />
+    <Content Include="Content\img\phones\t-mobile-mytouch-4g.5.jpg" />
+    <Content Include="Content\partials\phone-detail.html" />
+    <Content Include="Content\partials\phone-list.html" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -236,6 +324,11 @@
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\app\app.config.js" />
+    <Content Include="Scripts\app\app.module.js" />
+    <Content Include="Scripts\app\phones\thekids-phonedetails-controller.js" />
+    <Content Include="Scripts\app\phones\thekids-phonelist-controller.js" />
+    <Content Include="Scripts\app\playground\thekids-kids-controller.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular-touch.min.js.map" />
     <Content Include="Scripts\angular-sanitize.min.js.map" />
@@ -248,6 +341,27 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Content\phones\dell-streak-7.json" />
+    <Content Include="Content\phones\dell-venue.json" />
+    <Content Include="Content\phones\droid-2-global-by-motorola.json" />
+    <Content Include="Content\phones\droid-pro-by-motorola.json" />
+    <Content Include="Content\phones\lg-axis.json" />
+    <Content Include="Content\phones\motorola-atrix-4g.json" />
+    <Content Include="Content\phones\motorola-bravo-with-motoblur.json" />
+    <Content Include="Content\phones\motorola-charm-with-motoblur.json" />
+    <Content Include="Content\phones\motorola-defy-with-motoblur.json" />
+    <Content Include="Content\phones\motorola-xoom-with-wi-fi.json" />
+    <Content Include="Content\phones\motorola-xoom.json" />
+    <Content Include="Content\phones\nexus-s.json" />
+    <Content Include="Content\phones\phones.json" />
+    <Content Include="Content\phones\samsung-galaxy-tab.json" />
+    <Content Include="Content\phones\samsung-gem.json" />
+    <Content Include="Content\phones\samsung-mesmerize-a-galaxy-s-phone.json" />
+    <Content Include="Content\phones\samsung-showcase-a-galaxy-s-phone.json" />
+    <Content Include="Content\phones\samsung-transform.json" />
+    <Content Include="Content\phones\sanyo-zio.json" />
+    <Content Include="Content\phones\t-mobile-g2.json" />
+    <Content Include="Content\phones\t-mobile-mytouch-4g.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1042,10 +1156,16 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Phone\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\app\" />
+    <Folder Include="Scripts\app\contact\" />
+    <Folder Include="Scripts\app\core\" />
+    <Folder Include="Scripts\app\parents\" />
+    <Folder Include="Scripts\app\repositories\" />
+    <Folder Include="Scripts\app\services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

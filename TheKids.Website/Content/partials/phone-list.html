@@ -1,0 +1,30 @@
+﻿<div class="container-fluid" ng-controller="thekids-phonelist-controller as phoneCtrl">
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        Search: <input ng-model="phoneCtrl.query" /> <p>You have type in {{phoneCtrl.query}}</p>
+        Sort by: <select ng-model="phoneCtrl.orderProp">
+            <option value="name">Alphabetical</option>
+            <option value="age">Newest</option>
+            <option value="-age">Oldest</option>
+        </select>
+    </div>
+    <div class="col-md-10">
+        <ul>
+            <li ng-repeat="phone in phoneCtrl.phones | filter:phoneCtrl.query |orderBy:phoneCtrl.orderProp">
+                <a href="#/phone/{{phone.id}}" class="thumbnail">
+                    <img ng-src="{{phone.imageUrl}}" />
+                </a>
+                <a href="#/phone/{{phone.id}}">{{phone.name}}</a>
+                <p ng-bind="phone.snippet">
+                </p>
+            </li>
+        </ul>
+
+    </div>
+    {{phoneCtrl.orderProp}}
+    <p ng-bind="phoneCtrl.orderProp">
+    </p>
+
+    <pre>{{phoneCtrl.phones | filter:phoneCtrl.query | orderBy:phoneCtrl.orderProp | json}}</pre>
+</div>
