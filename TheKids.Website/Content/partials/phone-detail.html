@@ -1,8 +1,8 @@
 ﻿
 
 <div ng-controller="thekids-phonedetails-controller as phoneCtrl">
-
-    <img ng-src="{{phoneCtrl.phone.images[0]}}" class="phone">
+    
+    <img ng-src="{{phoneCtrl.mainImageUrl}}" class="phone">
 
     <h1>{{phoneCtrl.phone.name}}</h1>
 
@@ -11,7 +11,7 @@
     <ul class="phone-thumbs">
 
         <li ng-repeat="img in phoneCtrl.phone.images">
-            <img ng-src="{{img}}">
+            <img ng-src="{{img}}" ng-click="phoneCtrl.setMainImg(img)">
 
         </li>
 
@@ -198,4 +198,6 @@
         </li>
 
     </ul>
+    
+    <button type="button" ng-click="phoneCtrl.sayHello(phoneCtrl.phone.name)">Click Me</button>
 </div>

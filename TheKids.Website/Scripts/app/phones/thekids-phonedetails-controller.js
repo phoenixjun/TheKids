@@ -14,7 +14,10 @@
                     imgs.push('/content/' + value);
                 });
                 vm.phone.images = imgs;
+                vm.mainImageUrl = vm.phone.images[0];
             });
+        vm.setMainImg = function (url) { vm.mainImageUrl = url; }
+        vm.sayHello = function(phoneName) { alert('hello ' + phoneName); }
     }
     app.controller('thekids-phonedetails-controller', ['$routeParams', '$http', phoneCtrl]);
 }());
