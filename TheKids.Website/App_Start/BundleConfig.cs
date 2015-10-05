@@ -37,6 +37,7 @@ namespace TheKids.Website
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/app/app.config.js",
                 "~/Scripts/app/app.module.js",
+                "~/Scripts/app/filters/checkmark.js",
                 //"~/Scripts/app/playground/thekids-kids-controller.js",
                 "~/Scripts/app/phones/thekids-phonelist-controller.js",
                 "~/Scripts/app/phones/thekids-phonedetails-controller.js"

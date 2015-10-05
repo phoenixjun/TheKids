@@ -1,7 +1,7 @@
 ﻿'use strict';
 (function() {
 
-    var app = angular.module("thekidsphone",[]);
+    var app = angular.module("thekidsphone");
     var phoneCtrl = function($routeParams, $http) {
         var vm = this;
         vm.phoneId = $routeParams.phoneId;
